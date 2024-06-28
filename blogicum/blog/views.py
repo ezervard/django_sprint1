@@ -57,7 +57,6 @@ def post_detail(request, pk):
 
 
 def category(request, category_posts):
-    category = [post for post in posts if post['category'] == category_posts]
     template = 'blog/category.html'
     context = {'category_posts': category_posts, 'index': category_posts}
     return render(request, template, context)
