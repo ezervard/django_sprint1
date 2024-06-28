@@ -5,30 +5,28 @@
 {% endblock %}
 
 {% block content %} 
-  <div class="container py-5">
+<div class="container py-5">
     <h1>Лента записей</h1>
     <hr>                        
     <ul>
-      {% for post in posts %}
+        {% for post in posts %}
         <li>
-          Место: {{ post.location }}
-        </li>
-
-        <li>
-          Дата: {{ post.date }}
+            Место: {{ post.location }}
         </li>
         <li>
-          Категория: <a href="{% url 'blog:category_posts' category_posts=post.category %}">{{ post.category }}</a>
+            Дата: {{ post.date }}
         </li>
         <li>
-          <p>{{ post.text|truncatewords:10 }}</p>
+            Категория: <a href="{% url 'blog:category_posts' category_posts=post.category %}">{{ post.category }}</a>
         </li>
         <li>
-          <a href="{% url 'blog:post_detail' pk=post.id %}">Читать полный текст</a>
+            <p>{{ post.text|truncatewords:10 }}</p>
         </li>
-          <hr>
-      {% endfor %}
+        <li>
+            <a href="{% url 'blog:post_detail' pk=post.id %}">Читать полный текст</a>
+        </li>
+        <hr>
+        {% endfor %}
     </ul>
-  </div>
-  {% endblock %}
-  
+</div>
+{% endblock %}
