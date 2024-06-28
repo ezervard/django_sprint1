@@ -11,16 +11,16 @@
     <ul>
         {% for post in posts %}
         <li>
-            Место: {{ post.location }}
+            <b>Место:</b> {{ post.location }}
         </li>
         <li>
-            Дата: {{ post.date }}
+            <b>Дата:</b> {{ post.date }}
         </li>
         <li>
-            Категория: <a href="{% url 'blog:category_posts' category_posts=post.category %}">{{ post.category }}</a>
+            <b>Категория:</b> <a href="{% url 'blog:category_posts' category_posts=post.category %}">{{ post.category }}</a>
         </li>
         <li>
-            <p>{{ post.text|truncatewords:10 }}</p>
+            <p><em>{{ post.text|truncatewords:10 }}</em></p>
         </li>
         <li>
             <a href="{% url 'blog:post_detail' pk=post.id %}">Читать полный текст</a>
