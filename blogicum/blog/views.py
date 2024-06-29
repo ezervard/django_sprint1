@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import Http404
 
 posts = [
     {
@@ -46,18 +47,18 @@ posts = [
 
 def index(request):
     reversed_posts = reversed(posts)
-    template = 'blog/index.html'
     context = {'posts': reversed_posts}
-    return render(request, template, context)
+    return render(request, 'blog/index.html', context)
 
 
-def post_detail(request, pk):
-    template = 'blog/detail.html'
-    context = {'post': posts[pk]}
-    return render(request, template, context)
+def post_detail(request, post_id):
+    try:
+        context = {'post': posts[post_id]}
+        return render(request, 'blog/detail.html', context)
+    except IndexError:
+        raise Http404("Запись не найдена")
 
 
 def category(request, category_posts):
-    template = 'blog/category.html'
     context = {'category_posts': category_posts, 'index': category_posts}
-    return render(request, template, context)
+    return render(request, 'blog/category.html', context)

@@ -1,0 +1,15 @@
+<ul>
+    <li>
+        <b>Место:</b> {{ post.location }}
+    </li>
+</ul>
+<ul>
+    <li>
+        <b>Дата:</b> {{ post.date }}
+    </li>
+</ul>
+<ul>
+    <li>
+        <b>Категория:</b> <a href="{% url 'blog:category_posts' category_posts=post.category %}">{{ post.category }}</a>
+    </li>
+</ul> 
